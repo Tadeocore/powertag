@@ -8,7 +8,7 @@ public class MovementCharacter : MonoBehaviour
 	private Rigidbody rb;
 
 	//Declaro la variable pública velocidad para poder modificarla desde la Inspector window
-	[Range(5,30)]
+	[Range(5,20)]
 	public float velocidad = 15;
 
 	void Start()
