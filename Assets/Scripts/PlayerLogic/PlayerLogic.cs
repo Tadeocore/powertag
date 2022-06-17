@@ -7,22 +7,45 @@ public class PlayerLogic : GameManager
     public bool fMancha;
     GameManager game;
 
+
     void Update()
     {
         fMancha = GetEresMancha();
-
+        if (tag == "PlayerMancha")
+        {
+            gameObject.SetActive(SetEresMancha(true));
+        }   if (tag == "PlayerMancha")
+            {
+                gameObject.SetActive(SetEresMancha(false));
+            }
     }
 
-    private void OnTriggerEnter(Collider tr)
+    private void OnTriggerEnter(Collider other)
     {
-        if (tr.tag.Equals("PlayerMancha"))
+        var player1 = GameObject.FindGameObjectWithTag("PlayerMancha");
+        var otherPlayer = GameObject.FindGameObjectWithTag("PlayerLibre");
+
+        switch (other.tag)
         {
-            tr.gameObject.SetActive(SetEresMancha(true));
+            case "PlayerLibre":
+                otherPlayer.tag = "PlayerMancha";
+                
+                break;
         }
-        if (GetEresMancha())
+
+        /*if (other.tag == "PlayerMancha")
         {
-            tr.tag = "PlayerMancha";
-        }
+            other.gameObject.SetActive(SetEresMancha(true));
+            Player.SetActive(SetEresMancha(false));
+        }   if (GetEresMancha())
+            {
+                other.tag = "PlayerMancha";
+            }
+            else
+            {
+                other.tag = "PlayerLibre";
+            }*/
+
 
     }
 }
